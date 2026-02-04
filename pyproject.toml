@@ -37,6 +37,8 @@ dev = [
     "isort>=5.12",
     "mypy>=1.0",
     "ruff>=0.1",
+    "types-PyYAML",
+    "types-python-dateutil",
 ]
 
 [project.scripts]

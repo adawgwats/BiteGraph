@@ -68,7 +68,7 @@ class PipelineRunner:
             )
             consumption = (
                 self.inference_engine.infer(normalized, classification, mapping)
-                if self.inference_engine and classification
+                if self.inference_engine and classification and mapping
                 else None
             )
             interpretation = self._build_interpretation(normalized, classification, mapping)

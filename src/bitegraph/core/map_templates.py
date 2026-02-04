@@ -46,7 +46,7 @@ def _load_json_files(directory: Path | None, resource_dir: str) -> list[dict[str
     try:
         resource_path = resources.files("bitegraph.templates").joinpath(resource_dir)
         for entry in resource_path.iterdir():
-            if entry.suffix == ".json":
+            if entry.name.endswith(".json"):
                 with entry.open("r", encoding="utf-8") as handle:
                     data.append(json.load(handle))
     except FileNotFoundError:
@@ -75,11 +75,13 @@ class TemplateIngredientMapper:
         dishes: list[DishTemplate] = []
         payloads = _load_json_files(base_path / "dishes" if base_path else None, "dishes")
         for payload in payloads:
-            entries = []
+            entries: list[dict[str, Any]] = []
             if isinstance(payload, dict):
-                entries = payload.get("canonical_foods", []) or []
+                raw_entries = payload.get("canonical_foods", []) or []
+                if isinstance(raw_entries, list):
+                    entries = [e for e in raw_entries if isinstance(e, dict)]
             elif isinstance(payload, list):
-                entries = payload
+                entries = [e for e in payload if isinstance(e, dict)]
             for entry in entries:
                 canonical_food_id = entry.get("canonical_food_id")
                 name = entry.get("name")

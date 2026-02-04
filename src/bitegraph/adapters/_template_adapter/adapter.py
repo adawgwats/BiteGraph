@@ -76,6 +76,8 @@ class TemplateAdapter:
         return items
 
     def _safe_float(self, value: str | None, default: float = 0.0) -> float:
+        if value is None:
+            return default
         try:
             return float(value)
         except (TypeError, ValueError):
@@ -85,6 +87,7 @@ class TemplateAdapter:
         if not value:
             return None
         try:
-            return date_parser.isoparse(value)
+            parsed = date_parser.isoparse(value)
+            return parsed if isinstance(parsed, datetime) else None
         except (ValueError, TypeError):
             return None

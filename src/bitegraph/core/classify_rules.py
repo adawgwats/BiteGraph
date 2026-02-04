@@ -80,7 +80,7 @@ def _load_json_files(directory: Path | None, resource_dir: str) -> list[dict[str
     try:
         resource_path = resources.files("bitegraph.templates").joinpath(resource_dir)
         for entry in resource_path.iterdir():
-            if entry.suffix == ".json":
+            if entry.name.endswith(".json"):
                 with entry.open("r", encoding="utf-8") as handle:
                     data.append(json.load(handle))
     except FileNotFoundError:

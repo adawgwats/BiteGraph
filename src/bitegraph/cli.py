@@ -16,6 +16,7 @@ from bitegraph.adapters.ubereats import UberEatsAdapter
 from bitegraph.core.classify_rules import RuleBasedClassifier
 from bitegraph.core.consume_infer import DefaultConsumptionInference
 from bitegraph.core.map_templates import TemplateIngredientMapper
+from bitegraph.core.interfaces import Adapter
 from bitegraph.core.models import (
     ClassificationResult,
     FoodKind,
@@ -135,7 +136,7 @@ def main(argv: list[str] | None = None) -> int:
     return 1
 
 
-def _adapter_for_source(source: str) -> Any:
+def _adapter_for_source(source: str) -> Adapter:
     if source == "uber_eats":
         return UberEatsAdapter()
     raise ValueError(f"Unsupported source: {source}")
@@ -172,7 +173,7 @@ def dataclass_to_dict(obj: Any) -> Any:
         return obj.isoformat()
     if isinstance(obj, Enum):
         return obj.value
-    if is_dataclass(obj):
+    if is_dataclass(obj) and not isinstance(obj, type):
         data = asdict(obj)
         return {key: dataclass_to_dict(value) for key, value in data.items()}
     if isinstance(obj, list):

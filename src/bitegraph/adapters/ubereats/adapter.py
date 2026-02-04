@@ -155,6 +155,8 @@ class UberEatsAdapter:
         return [p for p in parts if p]
 
     def _safe_float(self, value: str | None, default: float = 0.0) -> float:
+        if value is None:
+            return default
         try:
             return float(value)
         except (TypeError, ValueError):
