@@ -25,6 +25,12 @@ Out of scope:
 - Downstream enrichment beyond ingredient profiles
 - Application UI, recommendations, or infrastructure
 
+## Local CI
+
+Run the same checks as GitHub Actions before pushing:
+
+- Windows: `scripts\ci_local.ps1`
+- macOS/Linux: `scripts/ci_local.sh`
 ## Quick Start
 
 ### Installation
