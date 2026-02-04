@@ -1,0 +1,3 @@
+City_Name,Restaurant_Name,Request_Time_Local,Final_Delivery_Time_Local,Order_Status,Item_Name,Item_quantity,Customizations,Customization_Cost_Local,Special_Instructions,Item_Price,Order_Price,Currency
+Seattle,Unicode Cafe,2026-01-12T08:05:00Z,2026-01-12T08:25:00Z,completed,Café Latte,1,,0,,4.75,9.50,USD
+Seattle,Unicode Cafe,2026-01-12T08:05:00Z,2026-01-12T08:25:00Z,completed,Crème Brûlée,1,,0,,4.75,9.50,USD

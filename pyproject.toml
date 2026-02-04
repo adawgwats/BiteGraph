@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bitegraph-core"
+version = "0.1.0"
+description = "A modular engine that converts messy order/export data into normalized, classified, and mapped food events."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "FlavCliq Contributors"}
+]
+keywords = ["food", "orders", "normalization", "classification", "adapters"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Food",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+dependencies = [
+    "pydantic>=2.0",
+    "pyyaml>=6.0",
+    "python-dateutil>=2.8.0",
+    "rapidfuzz>=3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "isort>=5.12",
+    "mypy>=1.0",
+    "ruff>=0.1",
+]
+
+[project.scripts]
+bitegraph = "bitegraph.cli:main"
+
+[project.urls]
+"Repository" = "https://github.com/FlavCliq/bitegraph"
+"Documentation" = "https://github.com/FlavCliq/bitegraph/tree/main/docs"
+"Bug Tracker" = "https://github.com/FlavCliq/bitegraph/issues"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = {find = {where = ["src"]}}
+
+[tool.setuptools.package-data]
+bitegraph = ["templates/**/*.yaml", "templates/**/*.json"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=src/bitegraph --cov-report=term-missing"

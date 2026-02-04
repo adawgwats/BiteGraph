@@ -1,0 +1,2 @@
+City_Name,Restaurant_Name,Request_Time_Local,Final_Delivery_Time_Local,Order_Status,Item_Name,Item_quantity,Customizations,Customization_Cost_Local,Special_Instructions,Item_Price,Order_Price,Currency
+Washington D.C.,Chipotle,2026-01-23T15:11:38Z,2026-01-23T15:48:33Z,completed,Burrito,1,"White Rice, Extra Portion, No Cheese",0,,13.25,35.81,USD

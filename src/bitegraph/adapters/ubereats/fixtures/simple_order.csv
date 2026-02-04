@@ -1,0 +1,3 @@
+City_Name,Restaurant_Name,Request_Time_Local,Final_Delivery_Time_Local,Order_Status,Item_Name,Item_quantity,Customizations,Customization_Cost_Local,Special_Instructions,Item_Price,Order_Price,Currency
+Washington D.C.,Sample Diner,2026-01-15T19:30:00Z,2026-01-15T20:05:26Z,completed,Burger,1,,0,,8.99,24.50,USD
+Washington D.C.,Sample Diner,2026-01-15T19:30:00Z,2026-01-15T20:05:26Z,completed,Fries,1,,0,,3.50,24.50,USD

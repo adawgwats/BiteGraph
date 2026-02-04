@@ -1,0 +1,2 @@
+Restaurant_Name,Request_Time_Local,Order_Status,Item_Name,Item_quantity,Item_Price,Order_Price,Currency
+Sample Market,2026-01-20T12:00:00Z,completed,Spinach Salad,1,6.00,18.00,USD

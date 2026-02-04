@@ -1,0 +1,8 @@
+{
+  "grocery_raw": {
+    "banana": "banana_raw_v1",
+    "chicken breast": "chicken_breast_raw_v1",
+    "rice": "rice_raw_v1",
+    "spinach": "spinach_raw_v1"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "ingredient_profiles": [
+    {
+      "ingredient_profile_id": "burger_mushroom_v1.base",
+      "canonical_food_id": "burger_mushroom_v1",
+      "ingredients": [
+        {
+          "ingredient_id": "beef_patty_4oz",
+          "amount_relative": 1.0
+        },
+        {
+          "ingredient_id": "mushroom_sauteed",
+          "amount_relative": 0.5
+        },
+        {
+          "ingredient_id": "bread_brioche_bun",
+          "amount_relative": 1.0
+        },
+        {
+          "ingredient_id": "cheese_slice",
+          "amount_relative": 1.0
+        },
+        {
+          "ingredient_id": "lettuce",
+          "amount_relative": 0.2
+        },
+        {
+          "ingredient_id": "tomato",
+          "amount_relative": 0.2
+        }
+      ],
+      "version": 1,
+      "source": "template_v1"
+    },
+    {
+      "ingredient_profile_id": "chicken_sandwich_v1.base",
+      "canonical_food_id": "chicken_sandwich_v1",
+      "ingredients": [
+        {
+          "ingredient_id": "chicken_breast_fried",
+          "amount_relative": 1.0
+        },
+        {
+          "ingredient_id": "bread_brioche_bun",
+          "amount_relative": 1.0
+        },
+        {
+          "ingredient_id": "lettuce",
+          "amount_relative": 0.2
+        },
+        {
+          "ingredient_id": "tomato",
+          "amount_relative": 0.2
+        },
+        {
+          "ingredient_id": "mayo",
+          "amount_relative": 0.2
+        }
+      ],
+      "version": 1,
+      "source": "template_v1"
+    },
+    {
+      "ingredient_profile_id": "spinach_raw_v1.base",
+      "canonical_food_id": "spinach_raw_v1",
+      "ingredients": [
+        {
+          "ingredient_id": "spinach_raw",
+          "amount_relative": 1.0
+        }
+      ],
+      "version": 1,
+      "source": "template_v1"
+    },
+    {
+      "ingredient_profile_id": "banana_raw_v1.base",
+      "canonical_food_id": "banana_raw_v1",
+      "ingredients": [
+        {
+          "ingredient_id": "banana_raw",
+          "amount_relative": 1.0
+        }
+      ],
+      "version": 1,
+      "source": "template_v1"
+    },
+    {
+      "ingredient_profile_id": "chicken_breast_raw_v1.base",
+      "canonical_food_id": "chicken_breast_raw_v1",
+      "ingredients": [
+        {
+          "ingredient_id": "chicken_breast_raw",
+          "amount_relative": 1.0
+        }
+      ],
+      "version": 1,
+      "source": "template_v1"
+    },
+    {
+      "ingredient_profile_id": "rice_raw_v1.base",
+      "canonical_food_id": "rice_raw_v1",
+      "ingredients": [
+        {
+          "ingredient_id": "rice_raw",
+          "amount_relative": 1.0
+        }
+      ],
+      "version": 1,
+      "source": "template_v1"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+City_Name,Restaurant_Name,Request_Time_Local,Final_Delivery_Time_Local,Order_Status,Item_Name,Item_quantity,Customizations,Customization_Cost_Local,Special_Instructions,Item_Price,Order_Price,Currency
+Austin,Food Truck,2026-01-10T18:00:00Z,2026-01-10T18:20:00Z,completed,Taco,2,,0,,6.50,13.00,USD
+Austin,Food Truck,2026-01-10T18:00:00Z,2026-01-10T18:20:00Z,completed,Soda,1,,0,,2.00,13.00,USD
+Boston,Green Market,2026-01-11T11:30:00Z,2026-01-11T12:00:00Z,completed,Banana,5,,0,,3.00,10.00,USD

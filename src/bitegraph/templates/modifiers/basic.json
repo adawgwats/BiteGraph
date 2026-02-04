@@ -1,0 +1,22 @@
+{
+  "modifier_rules": [
+    {
+      "pattern": "extra",
+      "case_insensitive": true,
+      "confidence_boost": 0.03,
+      "reason": "extra_modifier"
+    },
+    {
+      "pattern": "no ",
+      "case_insensitive": true,
+      "confidence_boost": -0.02,
+      "reason": "removal_modifier"
+    },
+    {
+      "pattern": "light",
+      "case_insensitive": true,
+      "confidence_boost": -0.01,
+      "reason": "light_modifier"
+    }
+  ]
+}

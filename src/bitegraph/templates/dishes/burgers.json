@@ -1,0 +1,20 @@
+{
+  "canonical_foods": [
+    {
+      "canonical_food_id": "burger_mushroom_v1",
+      "name": "Mushroom Burger",
+      "aliases": ["Shroom Burger", "Mushroom Burger", "Mushroom Burger Deluxe"],
+      "food_kind": "prepared_meal",
+      "default_ingredient_profile_id": "burger_mushroom_v1.base",
+      "confidence": 0.95
+    },
+    {
+      "canonical_food_id": "chicken_sandwich_v1",
+      "name": "Chicken Sandwich",
+      "aliases": ["Chicken Sandwich", "Grilled Chicken Sandwich", "Crispy Chicken Sandwich"],
+      "food_kind": "prepared_meal",
+      "default_ingredient_profile_id": "chicken_sandwich_v1.base",
+      "confidence": 0.9
+    }
+  ]
+}

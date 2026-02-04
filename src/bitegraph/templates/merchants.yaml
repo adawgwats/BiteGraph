@@ -1,0 +1,108 @@
+# Merchant Normalization Rules
+# Map raw merchant names to canonical names
+
+merchants:
+  - raw_patterns:
+      - "SBUX"
+      - "Starbucks"
+      - "starbucks coffee"
+    canonical: "Starbucks"
+    category: "beverage"
+
+  - raw_patterns:
+      - "McDonalds"
+      - "McDonald's"
+      - "mcdonalds"
+    canonical: "McDonald's"
+    category: "fast_food"
+
+  - raw_patterns:
+      - "Shake Shack"
+      - "shakeshack"
+    canonical: "Shake Shack"
+    category: "fast_casual"
+
+  - raw_patterns:
+      - "Whole Foods"
+      - "WF"
+      - "whole foods market"
+    canonical: "Whole Foods Market"
+    category: "grocery"
+
+  - raw_patterns:
+      - "Trader Joe's"
+      - "trader joes"
+      - "TJ's"
+    canonical: "Trader Joe's"
+    category: "grocery"
+
+  - raw_patterns:
+      - "Wendy's"
+      - "Wendys"
+    canonical: "Wendy's"
+    category: "fast_food"
+
+  - raw_patterns:
+      - "Wawa"
+    canonical: "Wawa"
+    category: "market"
+
+  - raw_patterns:
+      - "Panera"
+      - "Panera Bread"
+    canonical: "Panera"
+    category: "fast_casual"
+
+  - raw_patterns:
+      - "Chipotle"
+      - "Chipotle Mexican Grill"
+    canonical: "Chipotle"
+    category: "fast_casual"
+
+  - raw_patterns:
+      - "Chick-fil-A"
+      - "Chick fil A"
+    canonical: "Chick-fil-A"
+    category: "fast_food"
+
+  - raw_patterns:
+      - "Buffalo Wild Wings"
+    canonical: "Buffalo Wild Wings"
+    category: "restaurant"
+
+  - raw_patterns:
+      - "Wegmans"
+    canonical: "Wegmans"
+    category: "grocery"
+
+  - raw_patterns:
+      - "Subway"
+    canonical: "Subway"
+    category: "fast_food"
+
+  - raw_patterns:
+      - "Taco Bell"
+    canonical: "Taco Bell"
+    category: "fast_food"
+
+  - raw_patterns:
+      - "KFC"
+      - "Kentucky Fried Chicken"
+    canonical: "KFC"
+    category: "fast_food"
+
+  - raw_patterns:
+      - "Domino's"
+      - "Dominos"
+    canonical: "Domino's"
+    category: "fast_food"
+
+  - raw_patterns:
+      - "Pizza Hut"
+    canonical: "Pizza Hut"
+    category: "fast_food"
+
+  - raw_patterns:
+      - "Burger King"
+    canonical: "Burger King"
+    category: "fast_food"

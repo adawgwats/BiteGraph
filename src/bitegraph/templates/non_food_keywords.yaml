@@ -1,0 +1,13 @@
+# Non-Food Keywords
+# Used to filter out service charges, taxes, tips, etc.
+
+non_food_keywords:
+  - "service fee"
+  - "delivery fee"
+  - "tax"
+  - "tip"
+  - "gratuity"
+  - "surcharge"
+  - "convenience fee"
+  - "small order fee"
+  - "order total"
