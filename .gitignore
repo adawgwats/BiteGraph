@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+build/
+dist/
+.eggs/
+*.egg-info/
+*.pyd
+*.so
+*.dylib
+.env
+out/
+data/
