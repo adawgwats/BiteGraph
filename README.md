@@ -29,6 +29,7 @@ Out of scope:
 
 Run the same checks as GitHub Actions before pushing:
 
+- Cross-platform: `python -m bitegraph.ci` (or `bitegraph-ci` after install)
 - Windows: `scripts\ci_local.ps1`
 - macOS/Linux: `scripts/ci_local.sh`
 ## Quick Start

@@ -40,6 +40,7 @@ dev = [
 ]
 
 [project.scripts]
+bitegraph-ci = "bitegraph.ci:main"
 bitegraph = "bitegraph.cli:main"
 
 [project.urls]
