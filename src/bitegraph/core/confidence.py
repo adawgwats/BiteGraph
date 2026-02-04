@@ -1,7 +1,5 @@
 """Confidence scoring utilities for mappings and classifications."""
 
-from typing import Optional
-
 
 def combine_confidences(scores: list[float], method: str = "average") -> float:
     """

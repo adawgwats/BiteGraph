@@ -10,7 +10,6 @@ from typing import Any
 
 from dateutil import parser as date_parser
 
-from bitegraph.core.interfaces import Adapter
 from bitegraph.core.models import PurchaseLineItem
 
 
