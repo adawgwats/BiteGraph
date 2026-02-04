@@ -20,4 +20,6 @@ def test_template_adapter_parse() -> None:
     items = adapter.parse(FIXTURE.read_bytes(), {"source": "template_source"})
     assert len(items) == 2
     assert items[0].merchant_name == "Sample Restaurant"
+    assert items[0].merchant_brand == "Sample Restaurant"
+    assert items[0].merchant_location is None
     assert items[0].item_name_raw == "Burger"

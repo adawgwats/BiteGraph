@@ -81,6 +81,7 @@ class UberEatsAdapter:
             restaurant = (
                 normalized.get("restaurant_name") or normalized.get("restaurant") or "Unknown"
             )
+            merchant_brand, merchant_location = self._split_merchant(restaurant)
             request_time = normalized.get("request_time_local") or normalized.get("request_time")
             item_name = normalized.get("item_name") or normalized.get("item") or ""
             quantity = self._safe_float(
@@ -124,6 +125,8 @@ class UberEatsAdapter:
                     user_id=user_id,
                     source="uber_eats",
                     merchant_name=restaurant,
+                    merchant_brand=merchant_brand,
+                    merchant_location=merchant_location,
                     timestamp=timestamp,
                     item_name_raw=item_name,
                     modifiers_raw=modifiers if modifiers else None,
@@ -153,6 +156,18 @@ class UberEatsAdapter:
             return []
         parts = [p.strip() for p in value.split(",")]
         return [p for p in parts if p]
+
+    def _split_merchant(self, merchant: str) -> tuple[str, str | None]:
+        value = (merchant or "").strip()
+        if not value:
+            return "", None
+        if value.endswith(")") and "(" in value:
+            prefix, _, suffix = value.rpartition("(")
+            brand = prefix.strip()
+            location = suffix[:-1].strip()
+            if brand:
+                return brand, location or None
+        return value, None
 
     def _safe_float(self, value: str | None, default: float = 0.0) -> float:
         if value is None:

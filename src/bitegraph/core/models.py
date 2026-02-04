@@ -51,7 +51,13 @@ class PurchaseLineItem:
     """Source system (e.g., 'uber_eats', 'doordash', 'csv_import')."""
 
     merchant_name: str = ""
-    """Normalized merchant/restaurant name."""
+    """Normalized merchant/restaurant name (may include location)."""
+
+    merchant_brand: str = ""
+    """Merchant brand name without location details."""
+
+    merchant_location: Optional[str] = None
+    """Merchant location detail if available (kept separate from brand)."""
 
     timestamp: Optional[datetime] = None
     """Order/transaction timestamp."""

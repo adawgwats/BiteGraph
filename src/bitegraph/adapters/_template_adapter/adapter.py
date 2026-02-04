@@ -45,6 +45,7 @@ class TemplateAdapter:
 
         for row in reader:
             merchant = (row.get("merchant_name") or row.get("merchant") or "Unknown").strip()
+            merchant_brand, merchant_location = self._split_merchant(merchant)
             item_name = (row.get("item_name") or row.get("item") or "").strip()
             quantity = self._safe_float(row.get("quantity"), default=1.0)
             unit_price = self._safe_float(row.get("unit_price"), default=0.0)
@@ -62,6 +63,8 @@ class TemplateAdapter:
                     user_id=user_id,
                     source=self.source_id(),
                     merchant_name=merchant,
+                    merchant_brand=merchant_brand,
+                    merchant_location=merchant_location,
                     timestamp=timestamp,
                     item_name_raw=item_name,
                     modifiers_raw=None,
@@ -74,6 +77,18 @@ class TemplateAdapter:
             )
 
         return items
+
+    def _split_merchant(self, merchant: str) -> tuple[str, str | None]:
+        value = (merchant or "").strip()
+        if not value:
+            return "", None
+        if value.endswith(")") and "(" in value:
+            prefix, _, suffix = value.rpartition("(")
+            brand = prefix.strip()
+            location = suffix[:-1].strip()
+            if brand:
+                return brand, location or None
+        return value, None
 
     def _safe_float(self, value: str | None, default: float = 0.0) -> float:
         if value is None:

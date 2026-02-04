@@ -24,6 +24,8 @@ def test_parse_simple_order(adapter: UberEatsAdapter) -> None:
     items = adapter.parse(_read_fixture("simple_order.csv"), {"source": "uber_eats"})
     assert len(items) == 2
     assert items[0].merchant_name == "Sample Diner"
+    assert items[0].merchant_brand == "Sample Diner"
+    assert items[0].merchant_location is None
     assert items[0].item_name_raw == "Burger"
 
 
@@ -37,6 +39,8 @@ def test_missing_columns(adapter: UberEatsAdapter) -> None:
     items = adapter.parse(_read_fixture("missing_columns.csv"), {"source": "uber_eats"})
     assert len(items) == 1
     assert items[0].merchant_name == "Sample Market"
+    assert items[0].merchant_brand == "Sample Market"
+    assert items[0].merchant_location is None
     assert items[0].item_name_raw == "Spinach Salad"
 
 

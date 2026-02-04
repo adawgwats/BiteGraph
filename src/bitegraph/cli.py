@@ -189,6 +189,8 @@ def parse_purchase_line_item(data: dict[str, Any]) -> PurchaseLineItem:
         user_id=data.get("user_id"),
         source=data.get("source", ""),
         merchant_name=data.get("merchant_name", ""),
+        merchant_brand=data.get("merchant_brand") or data.get("merchant_name", ""),
+        merchant_location=data.get("merchant_location"),
         timestamp=_parse_datetime(data.get("timestamp")),
         item_name_raw=data.get("item_name_raw", ""),
         modifiers_raw=data.get("modifiers_raw") or None,
