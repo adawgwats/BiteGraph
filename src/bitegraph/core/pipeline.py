@@ -84,9 +84,7 @@ class PipelineRunner:
             )
         return results
 
-    def process_with_adapter(
-        self, raw_bytes: bytes, metadata: dict
-    ) -> list[PipelineResult]:
+    def process_with_adapter(self, raw_bytes: bytes, metadata: dict) -> list[PipelineResult]:
         """Full pipeline: find adapter -> parse -> normalize -> classify -> map -> infer."""
         adapter = next((a for a in self.adapters if a.can_parse(metadata)), None)
         if not adapter:
@@ -132,4 +130,3 @@ class PipelineRunner:
             version=1,
             updated_at=datetime.utcnow(),
         )
-

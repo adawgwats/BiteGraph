@@ -78,17 +78,23 @@ class UberEatsAdapter:
                 if order_status not in {"completed", "delivered"}:
                     continue
 
-            restaurant = normalized.get("restaurant_name") or normalized.get("restaurant") or "Unknown"
+            restaurant = (
+                normalized.get("restaurant_name") or normalized.get("restaurant") or "Unknown"
+            )
             request_time = normalized.get("request_time_local") or normalized.get("request_time")
             item_name = normalized.get("item_name") or normalized.get("item") or ""
-            quantity = self._safe_float(normalized.get("item_quantity") or normalized.get("quantity"), default=1.0)
+            quantity = self._safe_float(
+                normalized.get("item_quantity") or normalized.get("quantity"), default=1.0
+            )
             item_price = self._safe_float(normalized.get("item_price"), default=0.0)
             order_price = self._safe_float(normalized.get("order_price"), default=0.0)
             currency = normalized.get("currency")
 
             timestamp = self._parse_timestamp(request_time)
 
-            modifiers = self._parse_modifiers(normalized.get("customizations") or normalized.get("customization"))
+            modifiers = self._parse_modifiers(
+                normalized.get("customizations") or normalized.get("customization")
+            )
 
             order_id = normalized.get("order_id") or ""
             if not order_id:

@@ -189,7 +189,9 @@ class TemplateIngredientMapper:
             return best
         return None
 
-    def _apply_modifier_rules(self, item: PurchaseLineItem, confidence: float, reasons: list[str]) -> float:
+    def _apply_modifier_rules(
+        self, item: PurchaseLineItem, confidence: float, reasons: list[str]
+    ) -> float:
         if not item.modifiers_raw:
             return confidence
         updated = confidence

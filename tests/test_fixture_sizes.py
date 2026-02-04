@@ -2,7 +2,6 @@
 
 from pathlib import Path
 
-
 MAX_BYTES = 50_000
 
 

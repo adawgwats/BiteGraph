@@ -134,7 +134,9 @@ class RuleBasedClassifier:
         return rules
 
     def _load_grocery_raw_keywords(self) -> list[str]:
-        payloads = _load_json_files(self.templates_path / "dishes" if self.templates_path else None, "dishes")
+        payloads = _load_json_files(
+            self.templates_path / "dishes" if self.templates_path else None, "dishes"
+        )
         keywords: list[str] = []
         for payload in payloads:
             if not isinstance(payload, dict):

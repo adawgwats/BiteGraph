@@ -8,7 +8,6 @@ from bitegraph.core.consume_infer import DefaultConsumptionInference
 from bitegraph.core.map_templates import TemplateIngredientMapper
 from bitegraph.core.pipeline import PipelineRunner
 
-
 FIXTURE = (
     Path(__file__).resolve().parents[1]
     / "src"

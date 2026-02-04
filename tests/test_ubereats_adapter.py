@@ -6,8 +6,9 @@ import pytest
 
 from bitegraph.adapters.ubereats import UberEatsAdapter
 
-
-FIXTURES = Path(__file__).resolve().parents[1] / "src" / "bitegraph" / "adapters" / "ubereats" / "fixtures"
+FIXTURES = (
+    Path(__file__).resolve().parents[1] / "src" / "bitegraph" / "adapters" / "ubereats" / "fixtures"
+)
 
 
 def _read_fixture(name: str) -> bytes:

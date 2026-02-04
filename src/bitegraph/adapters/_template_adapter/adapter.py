@@ -24,7 +24,9 @@ class TemplateAdapter:
         return "template_source"
 
     def can_parse(self, metadata: dict[str, Any]) -> bool:
-        return metadata.get("source") == self.source_id() or metadata.get("format") == "template_csv"
+        return (
+            metadata.get("source") == self.source_id() or metadata.get("format") == "template_csv"
+        )
 
     def parse(self, raw_bytes: bytes, metadata: dict[str, Any]) -> list[PurchaseLineItem]:
         try:
@@ -49,7 +51,9 @@ class TemplateAdapter:
             line_total = self._safe_float(row.get("line_total"), default=unit_price * quantity)
             timestamp = self._parse_timestamp(row.get("timestamp"))
 
-            event_id_input = f"{self.source_id()}|{merchant}|{row.get('timestamp','')}|{item_name}|{line_total}"
+            event_id_input = (
+                f"{self.source_id()}|{merchant}|{row.get('timestamp','')}|{item_name}|{line_total}"
+            )
             event_id = hashlib.sha256(event_id_input.encode("utf-8")).hexdigest()[:16]
 
             items.append(

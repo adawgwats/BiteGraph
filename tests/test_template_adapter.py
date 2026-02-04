@@ -4,7 +4,6 @@ from pathlib import Path
 
 from bitegraph.adapters._template_adapter import TemplateAdapter
 
-
 FIXTURE = (
     Path(__file__).resolve().parents[1]
     / "src"
