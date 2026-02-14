@@ -80,6 +80,15 @@ MappingResult(
 )
 ```
 
+## Nutrition + Flavor Enrichment (Template-First)
+
+After `MappingResult` resolves an `ingredient_profile_id`, BiteGraph can compute a lightweight enrichment payload:
+
+- Nutrition rollup: calories/protein/carbs/fat/fiber/sugar/sodium
+- Flavor vector: spicy/sweet/umami/creamy/fried/acidic/smoky/fresh
+
+This stage reuses local JSON templates (`templates/ingredient_profiles` + `templates/ingredients`) so it stays cheap and deterministic in local dev and on AWS.
+
 ## Grocery Mapping
 
 - `grocery_raw`: map basic items (banana, chicken breast, rice) via a small dictionary file

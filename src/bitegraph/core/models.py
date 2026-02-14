@@ -181,6 +181,34 @@ class MappingResult:
 
 
 @dataclass
+class NutritionProfile:
+    """Summed nutrient totals for a mapped food event."""
+
+    calories_kcal: float = 0.0
+    protein_g: float = 0.0
+    carbs_g: float = 0.0
+    fat_g: float = 0.0
+    fiber_g: float = 0.0
+    sugar_g: float = 0.0
+    sodium_mg: float = 0.0
+
+
+@dataclass
+class NutritionFlavorResult:
+    """Output of the nutrition/flavor enrichment stage."""
+
+    event_id: str
+    ingredient_profile_id: str
+    nutrition: NutritionProfile = field(default_factory=NutritionProfile)
+    flavor_axes: dict[str, float] = field(default_factory=dict)
+    ingredient_count: int = 0
+    covered_ingredient_count: int = 0
+    confidence: float = 0.0
+    reasons: list[str] = field(default_factory=list)
+    provenance: Provenance = Provenance.TEMPLATE_V1
+
+
+@dataclass
 class ConsumptionInference:
     """Output of the ConsumptionInferenceEngine stage."""
 

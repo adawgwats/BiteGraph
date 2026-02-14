@@ -6,6 +6,7 @@ from bitegraph.adapters.ubereats import UberEatsAdapter
 from bitegraph.core.classify_rules import RuleBasedClassifier
 from bitegraph.core.consume_infer import DefaultConsumptionInference
 from bitegraph.core.map_templates import TemplateIngredientMapper
+from bitegraph.core.nutrition_flavor import TemplateNutritionFlavorEnricher
 from bitegraph.core.pipeline import PipelineRunner
 
 FIXTURE = (
@@ -25,6 +26,7 @@ def test_pipeline_end_to_end() -> None:
         adapters=[adapter],
         classifier=RuleBasedClassifier(),
         mapper=TemplateIngredientMapper(),
+        enricher=TemplateNutritionFlavorEnricher(),
         inference_engine=DefaultConsumptionInference(),
     )
     results = runner.run_pipeline(FIXTURE.read_bytes(), {"source": "uber_eats"})
@@ -33,3 +35,5 @@ def test_pipeline_end_to_end() -> None:
     assert results[0].classification is not None
     assert results[0].mapping is not None
     assert results[0].consumption is not None
+
+    assert hasattr(results[0], "enrichment")

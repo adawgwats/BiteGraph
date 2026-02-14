@@ -16,6 +16,7 @@ from bitegraph.adapters.ubereats import UberEatsAdapter
 from bitegraph.core.classify_rules import RuleBasedClassifier
 from bitegraph.core.consume_infer import DefaultConsumptionInference
 from bitegraph.core.map_templates import TemplateIngredientMapper
+from bitegraph.core.nutrition_flavor import TemplateNutritionFlavorEnricher
 from bitegraph.core.interfaces import Adapter
 from bitegraph.core.models import (
     ClassificationResult,
@@ -97,6 +98,7 @@ def main(argv: list[str] | None = None) -> int:
             adapters=[adapter],
             classifier=RuleBasedClassifier(assume_food_if_priced=args.assume_food),
             mapper=TemplateIngredientMapper(),
+            enricher=TemplateNutritionFlavorEnricher(),
             inference_engine=DefaultConsumptionInference(),
         )
         raw_bytes = Path(args.file).read_bytes()
@@ -122,6 +124,7 @@ def main(argv: list[str] | None = None) -> int:
                 "item": dataclass_to_dict(r.item),
                 "classification": dataclass_to_dict(r.classification) if r.classification else None,
                 "mapping": dataclass_to_dict(r.mapping) if r.mapping else None,
+                "enrichment": dataclass_to_dict(r.enrichment) if r.enrichment else None,
                 "consumption": dataclass_to_dict(r.consumption) if r.consumption else None,
                 "interpretation": dataclass_to_dict(r.interpretation) if r.interpretation else None,
             }
@@ -223,3 +226,7 @@ def _parse_datetime(value: Any) -> datetime | None:
         return date_parser.isoparse(str(value))
     except (ValueError, TypeError):
         return None
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

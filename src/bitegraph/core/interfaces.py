@@ -6,6 +6,7 @@ from bitegraph.core.models import (
     ClassificationResult,
     ConsumptionInference,
     MappingResult,
+    NutritionFlavorResult,
     PurchaseLineItem,
 )
 
@@ -106,6 +107,30 @@ class IngredientMapper(Protocol):
 
         Returns:
             MappingResult with canonical_food_id, ingredient_profile_id, and confidence
+        """
+        ...
+
+
+@runtime_checkable
+class NutritionFlavorEnricher(Protocol):
+    """NutritionFlavorEnricher protocol: derive nutrition/flavor from mapped ingredients."""
+
+    def enrich(
+        self,
+        item: PurchaseLineItem,
+        cls: ClassificationResult,
+        mapping: MappingResult,
+    ) -> NutritionFlavorResult | None:
+        """
+        Enrich a mapped food item with nutrient and flavor summaries.
+
+        Args:
+            item: The PurchaseLineItem
+            cls: Its ClassificationResult
+            mapping: Its MappingResult
+
+        Returns:
+            NutritionFlavorResult when an ingredient profile exists, else None
         """
         ...
 

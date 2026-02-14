@@ -9,6 +9,7 @@ BiteGraph extracts structured meaning from real-world order and purchase data:
 - **Normalize** messy line items into canonical `PurchaseLineItem` events
 - **Classify** food vs. non-food, plus food subtypes (prepared meal, grocery, beverage)
 - **Map** raw ingredients with confidence scores and versioned overlays
+- **Enrich** mapped ingredients with lightweight nutrition + flavor vectors
 - **Infer** consumption separately from purchases (groceries are not auto-consumed)
 - **Extend** via adapters (Uber Eats, DoorDash, CSV, etc.)
 
@@ -19,10 +20,10 @@ BiteGraph focuses on:
 - Parsing raw purchase data into normalized events
 - Classifying food vs non-food and food subtypes
 - Mapping items to canonical foods and ingredient profiles with confidence and provenance
+- Computing low-cost nutrition/flavor summaries from template ingredient profiles
 
 Out of scope:
 
-- Downstream enrichment beyond ingredient profiles
 - Application UI, recommendations, or infrastructure
 
 ## Local CI

@@ -13,6 +13,7 @@ from bitegraph.core.interfaces import (
     ConsumptionInferenceEngine,
     IngredientMapper,
     Normalizer,
+    NutritionFlavorEnricher,
 )
 from bitegraph.core.models import (
     FoodVertical,
@@ -20,6 +21,7 @@ from bitegraph.core.models import (
     ConsumptionInference,
     FoodEventInterpretation,
     MappingResult,
+    NutritionFlavorResult,
     Provenance,
     PurchaseLineItem,
 )
@@ -31,12 +33,13 @@ class PipelineResult:
     interpretation: FoodEventInterpretation | None
     classification: ClassificationResult | None
     mapping: MappingResult | None
+    enrichment: NutritionFlavorResult | None
     consumption: ConsumptionInference | None
 
 
 class PipelineRunner:
     """
-    Orchestrates the processing pipeline: adapt -> normalize -> classify -> map -> infer.
+    Orchestrates the processing pipeline: adapt -> normalize -> classify -> map -> enrich -> infer.
 
     All stages are injected, so implementations can be swapped at runtime.
     """
@@ -47,12 +50,14 @@ class PipelineRunner:
         normalizer: Optional[Normalizer] = None,
         classifier: Optional[Classifier] = None,
         mapper: Optional[IngredientMapper] = None,
+        enricher: Optional[NutritionFlavorEnricher] = None,
         inference_engine: Optional[ConsumptionInferenceEngine] = None,
     ) -> None:
         self.adapters = adapters or []
         self.normalizer = normalizer
         self.classifier = classifier
         self.mapper = mapper
+        self.enricher = enricher
         self.inference_engine = inference_engine
 
     def run(self, raw_items: list[PurchaseLineItem]) -> list[PipelineResult]:
@@ -64,6 +69,11 @@ class PipelineRunner:
             mapping = (
                 self.mapper.map(normalized, classification)
                 if self.mapper and classification
+                else None
+            )
+            enrichment = (
+                self.enricher.enrich(normalized, classification, mapping)
+                if self.enricher and classification and mapping
                 else None
             )
             consumption = (
@@ -79,13 +89,14 @@ class PipelineRunner:
                     interpretation=interpretation,
                     classification=classification,
                     mapping=mapping,
+                    enrichment=enrichment,
                     consumption=consumption,
                 )
             )
         return results
 
     def process_with_adapter(self, raw_bytes: bytes, metadata: dict) -> list[PipelineResult]:
-        """Full pipeline: find adapter -> parse -> normalize -> classify -> map -> infer."""
+        """Full pipeline: find adapter -> parse -> normalize -> classify -> map -> enrich -> infer."""
         adapter = next((a for a in self.adapters if a.can_parse(metadata)), None)
         if not adapter:
             raise ValueError(f"No adapter found for metadata: {metadata}")
