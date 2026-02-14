@@ -17,6 +17,20 @@ class Adapter(Protocol):
         ...
 ```
 
+## Email Adapters (Generic Receipts)
+
+For email receipts, prefer one adapter (`email_generic`) that dispatches to
+sub-parsers in priority order. This keeps onboarding minimal and avoids
+per-merchant setup.
+
+Suggested dispatch order:
+1. Known sender templates (high confidence)
+2. HTML structured markup (schema.org Order/Invoice)
+3. Attachments (PDF/CSV/HTML)
+4. Plain-text heuristics (low confidence)
+
+See `docs/email_ingestion.md` for details and a recommended extraction schema.
+
 ## Step-by-Step: Creating a New Adapter
 
 ### 1. Copy the Template

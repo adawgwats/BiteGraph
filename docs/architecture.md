@@ -164,6 +164,13 @@ run_pipeline(raw_bytes, metadata) -> list[PipelineResult]
 3. Register in `AdapterRegistry`
 4. No changes to core
 
+### Email Ingestion Adapter (Generic Receipts)
+
+For email receipts, prefer a single `email_generic` adapter that routes to
+sub-parsers (known sender templates -> structured markup -> attachments ->
+heuristics). This avoids per-merchant onboarding while keeping high confidence
+for known formats. See `docs/email_ingestion.md` for the full strategy.
+
 ### Updating Food Knowledge
 
 1. Edit YAML/JSON templates
